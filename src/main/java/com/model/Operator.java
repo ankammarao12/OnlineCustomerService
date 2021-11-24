@@ -1,12 +1,24 @@
 package com.model;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 @Entity
-public class Operator {
+@Table(name = "operator1")
+public class Operator implements Serializable {
+	
+	
+	private static final long serialVersionUID = -9168833388053422036L;
 	@Id
 	@GeneratedValue
+	@Column(name="operator_id")
 	private int operatorId;
 	private String firstName;
 	private String lastName;
@@ -14,9 +26,19 @@ public class Operator {
 	private String mobile;
 	private String city;
 	
+	@OneToOne(targetEntity=Department.class,cascade=CascadeType.ALL)
+	@JoinColumn(name="department_id")
 	private Department department;
 
 	
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 	//Getter and Setter
 	public int getOperatorId() {
 		return operatorId;
@@ -66,17 +88,12 @@ public class Operator {
 		this.city = city;
 	}
 
-	public Department getDepartment() {
-		return department;
+	@Override
+	public String toString() {
+		return "Operator [operatorId=" + operatorId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
+				+ email + ", mobile=" + mobile + ", city=" + city + ", department=" + department + "]";
 	}
 
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-	//toString().
-		@Override
-		public String toString() {
-			return "Operator [operatorId=" + operatorId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
-					+ email + ", mobile=" + mobile + ", city=" + city + ", department=" + department + "]";
-		}
+	
+	
 }

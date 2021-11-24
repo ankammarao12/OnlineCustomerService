@@ -1,6 +1,12 @@
 package com.model;
 
-public class Login {
+import java.io.Serializable;
+
+public class Login implements Serializable {
+	
+	private static final long serialVersionUID = -9168833388053422036L;
+	
+	
 	private int username;
 	private String password;
 	public int getUsername() {

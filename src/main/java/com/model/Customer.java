@@ -1,20 +1,43 @@
 package com.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Customer {
+@Table(name = "customer")
+public class Customer implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7491038650836232522L;
 	@Id
 	@GeneratedValue
+	
+	@Column(name = "customer_id")
 	private int customerId;
+	@Column(name = "first_name")
 	private String firstName;
+	
+	@Column(name = "last_name")
 	private String lastName;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "mobile")
 	private String mobile;
+	
+	@Column(name = "city")
 	private String city;
+	
+	
 	
 	
 	public int getCustomerId() {

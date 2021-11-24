@@ -1,7 +1,9 @@
 package com.model;
 
-public enum UserType {
+import java.io.Serializable;
+
+public class UserType implements Serializable{
 	
-	CUSTOMER, OPERATOR
+	
 
 }

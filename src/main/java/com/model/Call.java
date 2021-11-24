@@ -1,12 +1,58 @@
 package com.model;
 
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Call {
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+@Entity
+@Table(name = "call")
+public class Call implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7015507122597006590L;
+
+
+	@Id
+	@GeneratedValue
+	@Column(name = "call_id")
 	private int callId;
+	
+	
+	@Column(name = "call_Date")
 	private Date callDate;
+	
+	@Column(name = "call_Duration")
 	private double callDuration;
+	
+	@NotNull
+	@Column(name = "phone_Number")
 	private String phoneNumber;
+	
+	
+	@OneToOne(targetEntity = Operator.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "operator_id")
+	private Operator receivedBy;
+	
+	
+	@OneToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
+
+	@OneToOne(targetEntity = Issue.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "issu_id")
+	private Issue issue;
+
 	
 	public int getCallId() {
 		return callId;
@@ -61,7 +107,5 @@ public class Call {
 
 
 
-	private Customer customer;
-	private Issue issue;
-	private Operator receivedBy;
+	
 }
