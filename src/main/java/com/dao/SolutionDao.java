@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.model.Solution;
 @Repository
-public interface SolutionDao extends JpaRepository<Solution,Integer> {
+public interface SolutionDao extends JpaRepository<Solution, Integer> {
 
 }

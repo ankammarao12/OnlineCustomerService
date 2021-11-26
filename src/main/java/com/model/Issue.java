@@ -1,12 +1,12 @@
 package com.model;
 
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +20,7 @@ public class Issue implements Serializable {
 	@Id 
 	@GeneratedValue
 	@Column(name = "issue_id")
-	private String issueId;
+	private int issueId;
 	
 	@Column(name = "issue_type")
 	private String issueType;
@@ -34,10 +34,10 @@ public class Issue implements Serializable {
 	
 	
 	
-	public String getIssueId() {
+	public int getIssueId() {
 		return issueId;
 	}
-	public void setIssueId(String issueId) {
+	public void setIssueId(int issueId) {
 		this.issueId = issueId;
 	}
 	public String getIssueType() {

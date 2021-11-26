@@ -42,16 +42,16 @@ public class Call implements Serializable{
 	
 	@OneToOne(targetEntity = Operator.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "operator_id")
-	private Operator receivedBy;
+	private Operator operator;
 	
 	
 	@OneToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id")
-	private Customer customer;
+	private Customer cu;
 
 	@OneToOne(targetEntity = Issue.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "issu_id")
-	private Issue issue;
+	private Issue i;
 
 	
 	public int getCallId() {
@@ -107,5 +107,7 @@ public class Call implements Serializable{
 
 
 
-	
+	private Customer customer;
+	private Issue issue;
+	private Operator receivedBy;
 }

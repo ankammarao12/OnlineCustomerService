@@ -1,5 +1,6 @@
 package com.service;
 
+
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -60,9 +61,9 @@ public class CustomerService {
 	repo2.save(login);
 	return "login success";
 	}
-	public Login changePassword(Login username) {
-		repo2.changePassword(username);
-		return username;
+	public Login changePassword(Login userName) {
+		repo2.save(userName);
+		return userName;
 	}
 	
 	@Autowired
@@ -78,4 +79,3 @@ public class CustomerService {
 	}
 
 	}
-

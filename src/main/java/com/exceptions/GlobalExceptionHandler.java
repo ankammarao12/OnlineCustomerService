@@ -1,8 +1,7 @@
 package com.exceptions;
-
 import java.time.LocalDateTime;
 import java.util.Date;
-
+import com.exceptions.CustomerNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -11,6 +10,7 @@ import org.springframework.web.context.request.WebRequest;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+	
     @ExceptionHandler(CustomerNotFoundException.class)
     public ResponseEntity<?> customerNotFoundException(CustomerNotFoundException ex, WebRequest request) {
          ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));

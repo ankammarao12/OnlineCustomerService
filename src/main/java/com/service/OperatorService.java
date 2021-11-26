@@ -1,6 +1,4 @@
 package com.service;
-
-
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -63,27 +61,27 @@ public class OperatorService {
 		return issue;
 	}
 	@Autowired
-	CustomerDao repo3;
+	CustomerDao repo2;
 	public Customer findCustomerById(int customerId)throws Throwable
 	{
 		Supplier s1= ()->new CustomerNotFoundException("customer Does not exist in the database");
-		Customer c=repo3.findById(customerId).orElseThrow(s1);
+		Customer c=repo2.findById(customerId).orElseThrow(s1);
 		return c;
 	}
-	public List<Customer> findCustomerByName(String customerName)throws CustomerNotFoundException
+	public List<Customer> findCustomerByName(String firstName)throws CustomerNotFoundException
 	{
-		List<Customer> c1=repo3.findByName(customerName);
+		List<Customer> c1=repo2.findAll();
 		return c1;
 	}
 	public Customer findCustomerByEmail(String email)throws CustomerNotFoundException
 	{
 		Supplier s2= ()->new CustomerNotFoundException("customer Does not exist in the database");
-		Customer c2=repo3.findCustomerByEmail(email);
+		Customer c2=(Customer) repo2.findAll();
 		return c2;
 	}
 
 	public Issue modifyCustomeIssue(Issue issue) {
-		
+	
 		return null;
 	}
 	
